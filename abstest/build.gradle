@@ -1,4 +1,20 @@
-repositories {
-   mavenCentral()
+apply plugin: 'android'
+
+dependencies {
+    compile project(':actionbarsherlock')
+    compile project(':lib_yutori')
 }
-apply plugin: 'idea'
+
+task list(dependsOn: configurations.compile) {
+     println "classpath = ${configurations.compile.collect {File file -> file.getAbsolutePath()}}"
+}
+
+android {
+    compileSdkVersion 17
+    buildToolsVersion "17.0.0"
+
+    defaultConfig {
+        minSdkVersion 4
+        targetSdkVersion 17
+    }
+}
